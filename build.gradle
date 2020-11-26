@@ -17,6 +17,7 @@ android {
 
     dependencies {
         compile 'com.google.code.findbugs:jsr305:3.0.2'
+        compile 'com.facebook.soloader:soloader:0.9.0+'
     }
 
     compileSdkVersion 23
@@ -34,7 +35,6 @@ android {
         java.srcDirs = [
             'first-party/fbjni/java',
             'first-party/proguard/annotations',
-            'first-party/soloader',
             'java']
         jniLibs.srcDir 'libs'
         jni.srcDirs = []
@@ -42,7 +42,7 @@ android {
     }
 
     task ndkBuildRelease(type: Exec) {
-      commandLine "$System.env.ANDROID_NDK/ndk-build",
+      commandLine "/Users/dev/Library/Android/sdk/ndk/16.1.4479499/ndk-build",
         '-C', file('.').absolutePath,
        'NDK_APPLICATION_MK=${PWD}/native/Application.mk',
        'NDK_MODULE_PATH=${PWD}/native:${PWD}/first-party/fbjni/native:${PWD}/third-party',
